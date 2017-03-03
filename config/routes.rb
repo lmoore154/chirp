@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
 
   post '/login' => 'sessions#create'
-  post '/signup' => 'users#create'
+  post '/' => 'users#create'
   get '/timeline' => 'posts#timeline'
   post '/follow/:id' => 'users#follow'
   post '/unfollow/:id' => 'users#unfollow'
