@@ -18,8 +18,12 @@ class UsersController < ApplicationController
 
   def follow
     @user = User.find_by(id: params[:id])
-    current_user.follow!(@user)
-    render json: ["#{current_user.username} is now following #{@user.username}."]
+    if current_user.follows?(@user)
+      render json: ["#{current_user.username} is already following #{@user.username}."]
+    else
+      current_user.follow!(@user)
+      render json: ["#{current_user.username} is now following #{@user.username}."]
+    end
   end
 
   def unfollow
