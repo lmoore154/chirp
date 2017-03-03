@@ -9,4 +9,5 @@ class ApplicationController < ActionController::API
   def require_user
     render json: ["You must be logged in to do that."], status: 401 unless current_user
   end
+  
 end
