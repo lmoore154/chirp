@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     # current_user.followees(User).each do |u|
     #   post_list += u.posts
     # end
-    user_timeline = User.timeline(current_user)
+    user_timeline = Post.timeline(current_user)
     render json: user_timeline
   end
 

@@ -1,6 +1,6 @@
-class UserSerializer < ActiveModel::Serializer
+class UserListSerializer < ActiveModel::Serializer
   attributes :id, :first_name, :last_name, :username, :email, :photo_url
-  has_many :posts
+
   has_many :following
   has_many :followable
 
