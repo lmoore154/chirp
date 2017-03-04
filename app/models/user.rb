@@ -7,10 +7,10 @@ class User < ApplicationRecord
   acts_as_follower
   acts_as_followable
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :password, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
 
 end

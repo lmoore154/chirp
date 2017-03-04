@@ -7,6 +7,10 @@ class PostsController < ApplicationController
     render json: posts
   end
 
+  def show
+    render json: Post.where(user_id: params[:id])
+  end
+
   def timeline
     # post_list = current_user.posts
     # current_user.followees(User).each do |u|
