@@ -29,10 +29,10 @@ class PostsController < ApplicationController
     end
   end
 
-  def search
-    post = Post.where("body LIKE ?", "%#{params[:body]}%")
-    render json: post
-  end
+  # def search
+  #   post = Post.where("body LIKE ?", "%#{params[:body]}%")
+  #   render json: post
+  # end
 
   private
 

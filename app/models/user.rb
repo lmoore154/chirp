@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   has_many :posts
 
   has_secure_password
@@ -12,13 +13,5 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :password, presence: true
   validates :email, presence: true, uniqueness: true
-
-  def followers
-    followers_count
-  end
-
-  def followees
-    followees_count
-  end
 
 end

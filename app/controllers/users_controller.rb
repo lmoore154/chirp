@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_user, only: [:follow]
+  before_action :require_user, only: [:index, :show, :follow, :unfollow]
 
   def index
     @users = User.all#.paginate(page: params[:page], per_page: 10)
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: User.find_by(id: params[:id]), serializer: UserListSerializer
+    render json: User.find(params[:id]), serializer: UserListSerializer
   end
 
   def create
