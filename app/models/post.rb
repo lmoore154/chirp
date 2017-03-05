@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
 
-  validates :body, presence: true, length: { maximum: 140 }
+  validates :body, presence: true, length: { minimum: 1, maximum: 140 }
 
   def self.timeline(user)
     following_ids = user.followees(User).pluck(:id)

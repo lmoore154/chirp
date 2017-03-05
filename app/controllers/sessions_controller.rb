@@ -9,4 +9,8 @@ class SessionsController < ApplicationController
     end
   end
 
+  def index
+    render json: ["Welcome to Chirp!"]
+  end
+
 end

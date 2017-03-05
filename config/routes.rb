@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :users
 
+  root 'sessions#index'
   post '/login' => 'sessions#create'
   post '/signup' => 'users#create'
   get '/timeline' => 'posts#timeline'
