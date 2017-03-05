@@ -13,4 +13,12 @@ class User < ApplicationRecord
   validates :password, presence: true
   validates :email, presence: true, uniqueness: true
 
+  def followers
+    followers_count
+  end
+
+  def followees
+    followees_count
+  end
+
 end

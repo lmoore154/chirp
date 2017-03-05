@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :require_user, only: [:create, :timeline]
 
   def index
-    posts = Post.all.paginate(page: params[:page], per_page: 10)
+    posts = Post.all#.paginate(page: params[:page], per_page: 10)
     render json: posts
   end
 
