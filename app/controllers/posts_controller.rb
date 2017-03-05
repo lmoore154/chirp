@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    render json: Post.where(user_id: params[:id])
+    render json: Post.find(params[:id])
   end
 
   def timeline

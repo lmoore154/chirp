@@ -2,7 +2,15 @@ require 'test_helper'
 
 class UsersTest < ActionDispatch::IntegrationTest
 
+  test 'users#index authentication' do
+    get '/users'
+    refute response.ok?
+    json = JSON.parse(response.body)
+    assert_equal "You must be logged in to do that.", json.first
+  end
+
   test 'users#create' do
+    users = User.all.count
     post '/signup',
     params: {
       username: "testuser",
@@ -17,6 +25,7 @@ class UsersTest < ActionDispatch::IntegrationTest
     assert json["token"]
     refute json["password"]
     refute json["password_digest"]
+    assert_equal User.all.count, (users + 1)
   end
 
   test 'users#show' do
@@ -26,6 +35,13 @@ class UsersTest < ActionDispatch::IntegrationTest
     assert response.ok?
     json = JSON.parse(response.body)
     assert_equal user.email, json["email"]
+  end
+
+  test 'user#show authentication' do
+    get "/users/4"
+    refute response.ok?
+    json = JSON.parse(response.body)
+    assert_equal "You must be logged in to do that.", json.first
   end
 
   test 'users can follow and unfollow users while logged in' do

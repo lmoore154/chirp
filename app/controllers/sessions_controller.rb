@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
     if @user
       render json: @user, serializer: UserExpandedSerializer
     else
-      render json: ["Incorrect login, try again."], status: 401
+      render json: ["Incorrect login, try again"], status: 401
     end
   end
 
   def index
-    render json: ["Welcome to Chirp!"]
+    render json: "Welcome to Chirp!"
   end
 
 end

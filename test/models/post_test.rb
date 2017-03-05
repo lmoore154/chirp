@@ -12,9 +12,15 @@ class PostTest < ActiveSupport::TestCase
 
   test 'post body cannot be blank' do
     post = Post.new(body: "")
-    refute response.ok?
-    json = JSON.parse
+    refute post.save
     assert post.errors.full_messages.include?("Body can't be blank")
   end
+
+  test 'post body cannot be longer than 160 characters' do
+    post = Post.new(body: ("0" * 161))
+    refute post.save
+    assert post.errors.full_messages.include?("Body is too long (maximum is 160 characters)")
+  end
+
 
 end
